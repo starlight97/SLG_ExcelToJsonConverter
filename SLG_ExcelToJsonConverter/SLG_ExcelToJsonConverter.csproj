@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B7668ECB-0F57-46F3-99FF-625839EB803B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>MyJsonConverter</RootNamespace>
-    <AssemblyName>MyJsonConverter</AssemblyName>
+    <RootNamespace>SLG_ExcelToJsonConverter</RootNamespace>
+    <AssemblyName>SLG_ExcelToJsonConverter</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -99,6 +99,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
