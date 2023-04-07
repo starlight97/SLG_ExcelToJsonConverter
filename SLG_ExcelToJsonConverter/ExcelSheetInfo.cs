@@ -16,6 +16,7 @@ namespace SLG_ExcelToJsonConverter
         private List<TypeCode> dataTypeCodes = new List<TypeCode>();
         private List<string> dataTypeNames = new List<string>();
         private List<List<dynamic>> dataValues = new List<List<dynamic>>();
+        private int colCount = 0;
 
         public Range UsedRange { get { return this.usedRange; } }
         public Worksheet ExcelSheet
@@ -32,8 +33,9 @@ namespace SLG_ExcelToJsonConverter
                 int row = 1;
                 for (int col = 1; col <= this.usedRange.Columns.Count; col++)
                 {
-                    if (usedRange.Cells[row, col] != null)
+                    if (usedRange.Cells[row, col] != null && usedRange.Cells[row, col].Value != null)
                     {
+                        colCount++;
                         dataNames.Add(usedRange.Cells[row, col].Value.ToString());
                     }
                 }
@@ -41,7 +43,7 @@ namespace SLG_ExcelToJsonConverter
                 row = 2;
                 for (int col = 1; col <= this.usedRange.Columns.Count; col++)
                 {
-                    if (usedRange.Cells[row, col] != null)
+                    if (usedRange.Cells[row, col] != null && usedRange.Cells[row, col].Value != null)
                     {
                         dataTypeNames.Add(usedRange.Cells[row, col].Value.ToString());
                     }
@@ -77,7 +79,7 @@ namespace SLG_ExcelToJsonConverter
             {
                 List<dynamic> valList = new List<dynamic>();
 
-                for (int col = 1; col <= usedRange.Columns.Count; col++)
+                for (int col = 1; col <= colCount; col++)
                 {
                     if (usedRange.Cells[row, col].Value != null)
                     {

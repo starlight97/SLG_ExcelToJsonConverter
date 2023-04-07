@@ -89,7 +89,6 @@ namespace SLG_ExcelToJsonConverter
                 ResultTextBox.Text = "변환 준비중...";
                 return;
             }
-            //
 
             ExcelReader.Init();
             foreach (var manager in FileManagerList)
@@ -97,9 +96,19 @@ namespace SLG_ExcelToJsonConverter
                 ExcelReader.AddExcelFile(manager.FileFullPath);
             }
 
+
+            //if (ExcelReader.InfoList.Count > 1)
+            //{
+            //    MessageBox.Show("파일에 시트가 2개이상 있으면 안돼요.", "아이고...", MessageBoxButtons.OK,
+            //        MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+            //    ResultTextBox.Text = "변환 준비중...";
+            //    ExcelReader.Free();
+            //    return;
+            //}
+
             //엑셀파일 저장.
             var allSheetsValues = ExcelReader.GetAllSheetValues();
-            for (int i = 0; i < allSheetsValues.Count; i++)
+            for (int i = 0; i < FileManagerList.Count; i++)
             {
                 string sheetText = JsonChanger.ChangToJArrayToString(ExcelReader.InfoList[i].DataNames, allSheetsValues[i]);
                 FileManagerList[i].SaveNewFile(sheetText);

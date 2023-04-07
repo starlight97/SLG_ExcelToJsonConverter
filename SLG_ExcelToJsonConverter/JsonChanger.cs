@@ -12,6 +12,9 @@ namespace SLG_ExcelToJsonConverter
     {
         public static JObject ChangeToJObject(List<string> nameList, List<dynamic> valList)
         {
+            if (valList.Count == 0)
+                return null;
+
             JObject obj = new JObject();
             for (int i = 0; i < nameList.Count; i++)
             {
@@ -25,7 +28,9 @@ namespace SLG_ExcelToJsonConverter
             JArray rtnArr = new JArray();
             for (int i = 0; i < valList.Count; i++)
             {
-                rtnArr.Add(JsonChanger.ChangeToJObject(nameList, valList[i]));
+                JObject jobj = JsonChanger.ChangeToJObject(nameList, valList[i]);
+                if(jobj !=null)
+                    rtnArr.Add(jobj);
             }
             return rtnArr;
         }
